@@ -1,0 +1,320 @@
+blocks:
+    analog:
+        library_name: RFDV_scratch_sim
+        name: simple_uvm_testcase_stim_analog
+        ports:
+            vcntrl0:
+                analog_type: dc
+                dir: input
+            vcntrl1:
+                analog_type: dc
+                dir: input
+            vcntrl2:
+                analog_type: dc
+                dir: input
+            vcntrl3:
+                analog_type: dc
+                dir: input
+    bias:
+        library_name: RFDV_scratch_sim
+        name: simple_uvm_testcase_stim_bias
+        ports:
+            {}
+    digital:
+        library_name: RFDV_scratch_sim
+        name: simple_uvm_testcase_stim_digital
+        ports:
+            clk_out_0:
+                digital_type: clock
+                dir: input
+            clk_out_1:
+                digital_type: clock
+                dir: input
+            clk_out_2:
+                digital_type: clock
+                dir: input
+            clk_out_3:
+                digital_type: clock
+                dir: input
+            mclk_in:
+                digital_info:
+                    nominal_freq: 60M
+                digital_type: clock
+                dir: output
+    dut:
+        library_name: RFDV_scratch
+        name: simple_uvm_testcase
+        ports:
+            AVDD1P8:
+                dir: input
+            AVSS:
+                dir: input
+            bg_enable:
+                dir: input
+            clk_en:
+                dir: input
+                lsb: 0
+                msb: 3
+            clk_out_0:
+                dir: output
+            clk_out_1:
+                dir: output
+            clk_out_2:
+                dir: output
+            clk_out_3:
+                dir: output
+            dll_lock_status:
+                dir: output
+                lsb: 0
+                msb: 3
+            mclk_in:
+                dir: input
+            mode_sel_0:
+                dir: input
+                lsb: 0
+                msb: 1
+            mode_sel_1:
+                dir: input
+                lsb: 0
+                msb: 1
+            mode_sel_2:
+                dir: input
+                lsb: 0
+                msb: 1
+            mode_sel_3:
+                dir: input
+                lsb: 0
+                msb: 1
+            vcntrl0:
+                dir: output
+            vcntrl1:
+                dir: output
+            vcntrl2:
+                dir: output
+            vcntrl3:
+                dir: output
+    power:
+        library_name: RFDV_scratch_sim
+        name: simple_uvm_testcase_stim_power
+        ports:
+            AVDD1P8:
+                dir: output
+                supply_nom: 1.8
+                supply_type: volts
+            AVSS:
+                dir: output
+                supply_type: ground
+    register:
+        library_name: RFDV_scratch_sim
+        name: simple_uvm_testcase_stim_register
+        ports:
+            bg_enable:
+                dir: output
+                reg_info:
+                    blockid: top
+                    default: 'b0
+                    description: bias_blk enable
+                    name: bg_enable
+                    on_value: 'b1 
+                    width: 1
+            clk_en:
+                dir: output
+                lsb: 0
+                msb: 3
+                reg_info:
+                    blockid: top
+                    default: 'b0000
+                    description: clk_blk enable
+                    name: clk_en
+                    on_value: 'b1111 
+                    width: 4
+            dll_lock_status:
+                dir: input
+                lsb: 0
+                msb: 3
+                reg_info:
+                    blockid: top
+                    description:  true when dll is locked in mode 1
+                    name: dll_lock_status
+                    width: 4
+            mode_sel_0:
+                dir: output
+                lsb: 0
+                msb: 1
+                reg_info:
+                    blockid: top
+                    default: 'b00
+                    description: set clock block freq ratio x1 x2 div2 div4  
+                    name: mode_sel_0
+                    on_value: 'b00
+                    width: 2
+            mode_sel_1:
+                dir: output
+                lsb: 0
+                msb: 1
+                reg_info:
+                    blockid: top
+                    default: 'b00
+                    description: set clock block freq ratio x1 x2 div2 div4  
+                    name: mode_sel_1
+                    on_value: 'b01
+                    width: 2
+            mode_sel_2:
+                dir: output
+                lsb: 0
+                msb: 1
+                reg_info:
+                    blockid: top
+                    default: 'b00
+                    description: set clock block freq ratio x1 x2 div2 div4  
+                    name: mode_sel_2
+                    on_value: 'b11
+                    width: 2
+            mode_sel_3:
+                dir: output
+                lsb: 0
+                msb: 1
+                reg_info:
+                    blockid: top
+                    default: 'b00
+                    description: set clock block freq ratio x1 x2 div2 div4  
+                    name: mode_sel_3
+                    on_value: 'b10
+                    width: 2
+        reg_blocks:
+            top:
+                bg_enable:
+                    direction: input
+                    porttype: register
+                    reg_info:
+                        blockid: top
+                        default: 'b0
+                        description: bias_blk enable
+                        name: bg_enable
+                        on_value: 'b1 
+                        width: 1
+                clk_en:
+                    direction: input
+                    lsb: 0
+                    msb: 3
+                    porttype: register
+                    reg_info:
+                        blockid: top
+                        default: 'b0000
+                        description: clk_blk enable
+                        name: clk_en
+                        on_value: 'b1111 
+                        width: 4
+                dll_lock_status:
+                    direction: output
+                    lsb: 0
+                    msb: 3
+                    porttype: register
+                    reg_info:
+                        blockid: top
+                        description:  true when dll is locked in mode 1
+                        name: dll_lock_status
+                        width: 4
+                mode_sel_0:
+                    direction: input
+                    lsb: 0
+                    msb: 1
+                    porttype: register
+                    reg_info:
+                        blockid: top
+                        default: 'b00
+                        description: set clock block freq ratio x1 x2 div2 div4  
+                        name: mode_sel_0
+                        on_value: 'b00
+                        width: 2
+                mode_sel_1:
+                    direction: input
+                    lsb: 0
+                    msb: 1
+                    porttype: register
+                    reg_info:
+                        blockid: top
+                        default: 'b00
+                        description: set clock block freq ratio x1 x2 div2 div4  
+                        name: mode_sel_1
+                        on_value: 'b01
+                        width: 2
+                mode_sel_2:
+                    direction: input
+                    lsb: 0
+                    msb: 1
+                    porttype: register
+                    reg_info:
+                        blockid: top
+                        default: 'b00
+                        description: set clock block freq ratio x1 x2 div2 div4  
+                        name: mode_sel_2
+                        on_value: 'b11
+                        width: 2
+                mode_sel_3:
+                    direction: input
+                    lsb: 0
+                    msb: 1
+                    porttype: register
+                    reg_info:
+                        blockid: top
+                        default: 'b00
+                        description: set clock block freq ratio x1 x2 div2 div4  
+                        name: mode_sel_3
+                        on_value: 'b10
+                        width: 2
+name: simple_uvm_testcase_tb
+signals:
+    AVDD1P8:
+        tb_block: power
+    AVSS:
+        tb_block: power
+    bg_enable:
+        tb_block: register
+    clk_en:
+        lsb: 0
+        msb: 3
+        tb_block: register
+    clk_out_0:
+        tb_block: digital
+    clk_out_1:
+        tb_block: digital
+    clk_out_2:
+        tb_block: digital
+    clk_out_3:
+        tb_block: digital
+    dll_lock_status:
+        lsb: 0
+        msb: 3
+        tb_block: register
+    mclk_in:
+        tb_block: digital
+    mode_sel_0:
+        lsb: 0
+        msb: 1
+        tb_block: register
+    mode_sel_1:
+        lsb: 0
+        msb: 1
+        tb_block: register
+    mode_sel_2:
+        lsb: 0
+        msb: 1
+        tb_block: register
+    mode_sel_3:
+        lsb: 0
+        msb: 1
+        tb_block: register
+    vcntrl0:
+        tb_block: analog
+    vcntrl1:
+        tb_block: analog
+    vcntrl2:
+        tb_block: analog
+    vcntrl3:
+        tb_block: analog
+tests:
+    sanity_test:
+        body: #100us;
+        sequences:
+            top_on: register

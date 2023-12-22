@@ -1,0 +1,22 @@
+lib: RFDV_scratch
+cellname: simple_uvm_testcase
+view: schematic
+ports:
+    AVDD1P8: input
+    AVSS: input
+    bg_enable: input
+    clk_en<3:0>: input
+    mclk_in: input
+    mode_sel_3<1:0>: input
+    mode_sel_2<1:0>: input
+    mode_sel_1<1:0>: input
+    mode_sel_0<1:0>: input
+    clk_out_3: output
+    clk_out_2: output
+    clk_out_1: output
+    clk_out_0: output
+    dll_lock_status<3:0>: output
+    vcntrl3: output
+    vcntrl2: output
+    vcntrl1: output
+    vcntrl0: output

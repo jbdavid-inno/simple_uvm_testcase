@@ -1,0 +1,72 @@
+library: RFDV_scratch
+name: simple_uvm_testcase
+ports:
+    AVDD1P8:
+        direction: input
+        porttype: power
+        supply_nom: 1.8
+        supply_type: volts
+    AVSS:
+        direction: input
+        porttype: power
+        supply_type: ground
+    bg_enable:
+        direction: input
+        porttype: register
+    clk_en:
+        direction: input
+        lsb: 0
+        msb: 3
+        porttype: register
+    clk_out_0:
+        direction: output
+        porttype: digital
+    clk_out_1:
+        direction: output
+        porttype: digital
+    clk_out_2:
+        direction: output
+        porttype: digital
+    clk_out_3:
+        direction: output
+        porttype: digital
+    dll_lock_status:
+        direction: output
+        lsb: 0
+        msb: 3
+        porttype: register
+    mclk_in:
+        direction: input
+        porttype: digital
+    mode_sel_0:
+        direction: input
+        lsb: 0
+        msb: 1
+        porttype: register
+    mode_sel_1:
+        direction: input
+        lsb: 0
+        msb: 1
+        porttype: register
+    mode_sel_2:
+        direction: input
+        lsb: 0
+        msb: 1
+        porttype: register
+    mode_sel_3:
+        direction: input
+        lsb: 0
+        msb: 1
+        porttype: register
+    vcntrl0:
+        direction: output
+        porttype: analog
+    vcntrl1:
+        direction: output
+        porttype: analog
+    vcntrl2:
+        direction: output
+        porttype: analog
+    vcntrl3:
+        direction: output
+        porttype: analog

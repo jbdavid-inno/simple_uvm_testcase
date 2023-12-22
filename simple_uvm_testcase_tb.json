@@ -1,0 +1,415 @@
+{
+    "name": "simple_uvm_testcase_tb",
+    "signals": {
+        "AVDD1P8": {
+            "tb_block": "power"
+        },
+        "AVSS": {
+            "tb_block": "power"
+        },
+        "bg_enable": {
+            "tb_block": "register"
+        },
+        "clk_en": {
+            "tb_block": "register",
+            "msb": "3",
+            "lsb": "0"
+        },
+        "clk_out_0": {
+            "tb_block": "digital"
+        },
+        "clk_out_1": {
+            "tb_block": "digital"
+        },
+        "clk_out_2": {
+            "tb_block": "digital"
+        },
+        "clk_out_3": {
+            "tb_block": "digital"
+        },
+        "dll_lock_status": {
+            "tb_block": "register",
+            "msb": "3",
+            "lsb": "0"
+        },
+        "mclk_in": {
+            "tb_block": "digital"
+        },
+        "mode_sel_0": {
+            "tb_block": "register",
+            "msb": "1",
+            "lsb": "0"
+        },
+        "mode_sel_1": {
+            "tb_block": "register",
+            "msb": "1",
+            "lsb": "0"
+        },
+        "mode_sel_2": {
+            "tb_block": "register",
+            "msb": "1",
+            "lsb": "0"
+        },
+        "mode_sel_3": {
+            "tb_block": "register",
+            "msb": "1",
+            "lsb": "0"
+        },
+        "vcntrl0": {
+            "tb_block": "analog"
+        },
+        "vcntrl1": {
+            "tb_block": "analog"
+        },
+        "vcntrl2": {
+            "tb_block": "analog"
+        },
+        "vcntrl3": {
+            "tb_block": "analog"
+        }
+    },
+    "blocks": {
+        "dut": {
+            "name": "simple_uvm_testcase",
+            "ports": {
+                "AVDD1P8": {
+                    "dir": "input"
+                },
+                "AVSS": {
+                    "dir": "input"
+                },
+                "bg_enable": {
+                    "dir": "input"
+                },
+                "clk_en": {
+                    "dir": "input",
+                    "msb": "3",
+                    "lsb": "0"
+                },
+                "clk_out_0": {
+                    "dir": "output"
+                },
+                "clk_out_1": {
+                    "dir": "output"
+                },
+                "clk_out_2": {
+                    "dir": "output"
+                },
+                "clk_out_3": {
+                    "dir": "output"
+                },
+                "dll_lock_status": {
+                    "dir": "output",
+                    "msb": "3",
+                    "lsb": "0"
+                },
+                "mclk_in": {
+                    "dir": "input"
+                },
+                "mode_sel_0": {
+                    "dir": "input",
+                    "msb": "1",
+                    "lsb": "0"
+                },
+                "mode_sel_1": {
+                    "dir": "input",
+                    "msb": "1",
+                    "lsb": "0"
+                },
+                "mode_sel_2": {
+                    "dir": "input",
+                    "msb": "1",
+                    "lsb": "0"
+                },
+                "mode_sel_3": {
+                    "dir": "input",
+                    "msb": "1",
+                    "lsb": "0"
+                },
+                "vcntrl0": {
+                    "dir": "output"
+                },
+                "vcntrl1": {
+                    "dir": "output"
+                },
+                "vcntrl2": {
+                    "dir": "output"
+                },
+                "vcntrl3": {
+                    "dir": "output"
+                }
+            },
+            "library_name": "RFDV_scratch"
+        },
+        "register": {
+            "name": "simple_uvm_testcase_stim_register",
+            "ports": {
+                "bg_enable": {
+                    "dir": "output",
+                    "reg_info": {
+                        "name": "bg_enable",
+                        "blockid": "top",
+                        "width": "1",
+                        "default": "'b0",
+                        "on_value": "'b1 ",
+                        "description": "bias_blk enable"
+                    }
+                },
+                "clk_en": {
+                    "dir": "output",
+                    "msb": "3",
+                    "lsb": "0",
+                    "reg_info": {
+                        "name": "clk_en",
+                        "blockid": "top",
+                        "width": "4",
+                        "default": "'b0000",
+                        "on_value": "'b1111 ",
+                        "description": "clk_blk enable"
+                    }
+                },
+                "dll_lock_status": {
+                    "dir": "input",
+                    "msb": "3",
+                    "lsb": "0",
+                    "reg_info": {
+                        "name": "dll_lock_status",
+                        "blockid": "top",
+                        "width": "4",
+                        "description": " true when dll is locked in mode 1"
+                    }
+                },
+                "mode_sel_0": {
+                    "dir": "output",
+                    "msb": "1",
+                    "lsb": "0",
+                    "reg_info": {
+                        "name": "mode_sel_0",
+                        "blockid": "top",
+                        "width": "2",
+                        "default": "'b00",
+                        "on_value": "'b00",
+                        "description": "set clock block freq ratio x1 x2 div2 div4  "
+                    }
+                },
+                "mode_sel_1": {
+                    "dir": "output",
+                    "msb": "1",
+                    "lsb": "0",
+                    "reg_info": {
+                        "name": "mode_sel_1",
+                        "blockid": "top",
+                        "width": "2",
+                        "default": "'b00",
+                        "on_value": "'b01",
+                        "description": "set clock block freq ratio x1 x2 div2 div4  "
+                    }
+                },
+                "mode_sel_2": {
+                    "dir": "output",
+                    "msb": "1",
+                    "lsb": "0",
+                    "reg_info": {
+                        "name": "mode_sel_2",
+                        "blockid": "top",
+                        "width": "2",
+                        "default": "'b00",
+                        "on_value": "'b11",
+                        "description": "set clock block freq ratio x1 x2 div2 div4  "
+                    }
+                },
+                "mode_sel_3": {
+                    "dir": "output",
+                    "msb": "1",
+                    "lsb": "0",
+                    "reg_info": {
+                        "name": "mode_sel_3",
+                        "blockid": "top",
+                        "width": "2",
+                        "default": "'b00",
+                        "on_value": "'b10",
+                        "description": "set clock block freq ratio x1 x2 div2 div4  "
+                    }
+                }
+            },
+            "library_name": "RFDV_scratch_sim",
+            "reg_blocks": {
+                "top": {
+                    "bg_enable": {
+                        "direction": "input",
+                        "porttype": "register",
+                        "reg_info": {
+                            "name": "bg_enable",
+                            "blockid": "top",
+                            "width": "1",
+                            "default": "'b0",
+                            "on_value": "'b1 ",
+                            "description": "bias_blk enable"
+                        }
+                    },
+                    "clk_en": {
+                        "direction": "input",
+                        "lsb": "0",
+                        "msb": "3",
+                        "porttype": "register",
+                        "reg_info": {
+                            "name": "clk_en",
+                            "blockid": "top",
+                            "width": "4",
+                            "default": "'b0000",
+                            "on_value": "'b1111 ",
+                            "description": "clk_blk enable"
+                        }
+                    },
+                    "dll_lock_status": {
+                        "direction": "output",
+                        "lsb": "0",
+                        "msb": "3",
+                        "porttype": "register",
+                        "reg_info": {
+                            "name": "dll_lock_status",
+                            "blockid": "top",
+                            "width": "4",
+                            "description": " true when dll is locked in mode 1"
+                        }
+                    },
+                    "mode_sel_0": {
+                        "direction": "input",
+                        "lsb": "0",
+                        "msb": "1",
+                        "porttype": "register",
+                        "reg_info": {
+                            "name": "mode_sel_0",
+                            "blockid": "top",
+                            "width": "2",
+                            "default": "'b00",
+                            "on_value": "'b00",
+                            "description": "set clock block freq ratio x1 x2 div2 div4  "
+                        }
+                    },
+                    "mode_sel_1": {
+                        "direction": "input",
+                        "lsb": "0",
+                        "msb": "1",
+                        "porttype": "register",
+                        "reg_info": {
+                            "name": "mode_sel_1",
+                            "blockid": "top",
+                            "width": "2",
+                            "default": "'b00",
+                            "on_value": "'b01",
+                            "description": "set clock block freq ratio x1 x2 div2 div4  "
+                        }
+                    },
+                    "mode_sel_2": {
+                        "direction": "input",
+                        "lsb": "0",
+                        "msb": "1",
+                        "porttype": "register",
+                        "reg_info": {
+                            "name": "mode_sel_2",
+                            "blockid": "top",
+                            "width": "2",
+                            "default": "'b00",
+                            "on_value": "'b11",
+                            "description": "set clock block freq ratio x1 x2 div2 div4  "
+                        }
+                    },
+                    "mode_sel_3": {
+                        "direction": "input",
+                        "lsb": "0",
+                        "msb": "1",
+                        "porttype": "register",
+                        "reg_info": {
+                            "name": "mode_sel_3",
+                            "blockid": "top",
+                            "width": "2",
+                            "default": "'b00",
+                            "on_value": "'b10",
+                            "description": "set clock block freq ratio x1 x2 div2 div4  "
+                        }
+                    }
+                }
+            }
+        },
+        "power": {
+            "name": "simple_uvm_testcase_stim_power",
+            "ports": {
+                "AVDD1P8": {
+                    "dir": "output",
+                    "supply_type": "volts",
+                    "supply_nom": "1.8"
+                },
+                "AVSS": {
+                    "dir": "output",
+                    "supply_type": "ground"
+                }
+            },
+            "library_name": "RFDV_scratch_sim"
+        },
+        "bias": {
+            "name": "simple_uvm_testcase_stim_bias",
+            "ports": {},
+            "library_name": "RFDV_scratch_sim"
+        },
+        "digital": {
+            "name": "simple_uvm_testcase_stim_digital",
+            "ports": {
+                "clk_out_0": {
+                    "dir": "input",
+                    "digital_type": "clock"
+                },
+                "clk_out_1": {
+                    "dir": "input",
+                    "digital_type": "clock"
+                },
+                "clk_out_2": {
+                    "dir": "input",
+                    "digital_type": "clock"
+                },
+                "clk_out_3": {
+                    "dir": "input",
+                    "digital_type": "clock"
+                },
+                "mclk_in": {
+                    "dir": "output",
+                    "digital_type": "clock",
+                    "digital_info": {
+                        "nominal_freq": "60M"
+                    }
+                }
+            },
+            "library_name": "RFDV_scratch_sim"
+        },
+        "analog": {
+            "name": "simple_uvm_testcase_stim_analog",
+            "ports": {
+                "vcntrl0": {
+                    "dir": "input",
+                    "analog_type": "dc"
+                },
+                "vcntrl1": {
+                    "dir": "input",
+                    "analog_type": "dc"
+                },
+                "vcntrl2": {
+                    "dir": "input",
+                    "analog_type": "dc"
+                },
+                "vcntrl3": {
+                    "dir": "input",
+                    "analog_type": "dc"
+                }
+            },
+            "library_name": "RFDV_scratch_sim"
+        }
+    },
+    "tests": {
+        "sanity_test": {
+            "sequences": {
+                "top_on": "register"
+            },
+            "body": "#100us;"
+        }
+    }
+}

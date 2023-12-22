@@ -1,0 +1,117 @@
+groups:
+    register:
+        patterns:
+            - digi
+            - digo
+        after: _
+        before: $
+        priority: 0
+        porttype: register
+    controls:
+        after: _
+        patterns:
+            - en
+            - sel
+            - fc
+            - byp
+            - ctrl
+            - reset
+            - rst
+            - adj
+            - set
+            - vset
+            - pol
+            - inv
+            - status
+        priority: 6
+        porttype: register
+    supply:
+        patterns:
+            - vdd
+            - VDD
+        priority: 2
+        porttype: power
+        implies:
+            supply_type: volts
+    ground:
+        patterns:
+            - vss
+            - VSS
+            - gnd
+            - GND
+        priority: 3
+        porttype: power
+        implies:
+            supply_type: ground
+    vldo:
+        patterns:
+            - ldo
+        implies:
+            supply_type: volts
+        priority: 4
+        porttype: power
+    resets:
+        after: _
+        patterns:
+            - reset
+            - rst
+        priority: 5
+        porttype: digital
+    clock:
+        after: _
+        patterns:
+            - clk
+            - CLK
+            - ck
+            - sync
+            - pck
+            - LO
+        priority: 8
+        porttype: digital
+    sclock:
+        after: 
+        patterns:
+            - clk
+            - CLK
+        priority: 7
+        porttype: digital
+    data:
+        after: _
+        patterns:
+            - data
+            - dta
+            - dith
+            - HS_TEST
+        priority: 1
+        porttype: digital
+    sdata:
+        patterns:
+            - IL[0-9][AB]_[RT]X
+        priority: 9
+        porttype: digital
+    ibias:
+        patterns:
+            - ipt
+            - IPT
+            - ibg
+            - IBG
+            - inp
+            - INP
+        priority: 10
+        implies:
+            bias_type: amps
+        porttype: bias
+default:
+    porttype: analog
+values:
+    ibias_nom:
+        patterns:
+            - \d*[pP]?\d+[uU]\d*
+        check_porttypes:
+            - bias
+    supply_nom:
+        patterns:
+            - \d+[pP]\d+
+        check_groups:
+            - supply
+
