@@ -1,0 +1,2 @@
+-incdir .
+simple_uvm_testcase_power_seq_lib_pkg.sv
