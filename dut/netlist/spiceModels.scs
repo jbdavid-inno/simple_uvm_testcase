@@ -1,0 +1,3 @@
+
+simulator lang=spectre
+include "$SPECTRE_MODEL_PATH/design_wrapper.lib.scs" section=tt_pre amsd_subckt_bind=yes

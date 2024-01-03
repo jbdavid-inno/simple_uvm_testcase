@@ -1,0 +1,10 @@
+// -----------------------------------------------------------------------------
+// (c) Copyright 2010 Cadence Design Systems, Inc. All rights reserved worldwide.
+// -----------------------------------------------------------------------------
+
+// HDL file for Lib - RFDV_scratch ,Cell - bused_port_bias_gen, View - MiM_DE
+-amscompilefile "file:${IC_INVOKE_DIR}/RFDV_scratch/bused_port_bias_gen/MiM_DE/verilog.sv lib:RFDV_scratch cell:bused_port_bias_gen view:MiM_DE"
+
+// HDL file for Lib - RFDV_scratch ,Cell - clk_dist_block, View - MiM_DE
+-amscompilefile "file:${IC_INVOKE_DIR}/RFDV_scratch/clk_dist_block/MiM_DE/verilog.sv lib:RFDV_scratch cell:clk_dist_block view:MiM_DE"
+

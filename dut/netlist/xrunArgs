@@ -1,0 +1,51 @@
+
+-clean 
+
+ -F  ${IC_INVOKE_DIR}/simple_uvm_testcase/simple_uvm_testcase_uvm_files.F
+ -F  ${IC_INVOKE_DIR}/simple_uvm_testcase/simple_uvm_testcase_tb/simple_uvm_testcase_tb_files.F
+-input ${IC_INVOKE_DIR}/simple_uvm_testcase/probeall.tcl
+-UNBUFFERED 
+-cdslib ./cds.lib 
+-errormax 50 
+-status 
+-nowarn DLNOHV 
+-nowarn DLCLAP 
+-disable_amscompilefile_opt 
+-v93 
+-reflib /tools/dgc/av/1.77.0/av/lib/DGC:DGC 
+-incdir ${IC_INVOKE_DIR}/
+-linedebug 
+-ade 
+-timescale 1ns/1ns 
+-vtimescale 1ns/1ns 
+-dresolution 
+-libverbose 
+-delay_mode None 
+-novitalaccl 
+-access r 
+-noparamerr 
+-modelincdir ${IC_INVOKE_DIR}/
+./spiceModels.scs 
+./amsControlSpectre.scs 
+-run -exit 
+-xmsimargs "+amsrawdir ../simulation_results"
+-spectre_args +logstatus 
+ -simcompatible_ams spectre 
+-name simple_uvm_testcase_tb_myConfig_simple_uvm_testcase_config_uvm  
+-F ${IC_INVOKE_DIR}/simple_uvm_testcase/pdk/Files.F 
+-allowredefinition 
+-amsbind 
+-uvm
+-uvmhome CDNS-1.2
++UVM_TESTNAME=sanity_test
+-top myConfig
+-compcnfg 
+myConfig.sv
+-amssupertop 
+-top cds_globals 
+./netlist.vams 
+./ie_card.scs
+-f ./textInputs
+./cds_globals.vams 
+-l ../simulation_results/xrun.log
+-spectre_args +aps
