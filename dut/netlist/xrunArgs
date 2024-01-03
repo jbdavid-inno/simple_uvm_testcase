@@ -45,7 +45,9 @@ myConfig.sv
 -top cds_globals 
 ./netlist.vams 
 ./ie_card.scs
--f ./textInputs
+//-f ./textInputs
+bused_port_bias_gen.sv
+clk_dist_block.sv
 ./cds_globals.vams 
 -l ../simulation_results/xrun.log
 -spectre_args +aps
