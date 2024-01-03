@@ -4,7 +4,7 @@
 # Set location variables
 
 ## IC_INVOKE_DIR  /projects/H3A0/workspaces/jdavid/trunk
-export IC_INVOKE_DIR=/projects/H3A0/workspaces/jdavid/trunk
+export IC_INVOKE_DIR=/projects/workspaces/jdavid/trunk
 
 ## AMS_IUS_HIER  /tools/cadence/XCELIUM/23.03.002
 export AMS_IUS_HIER=`cds_root xrun`
