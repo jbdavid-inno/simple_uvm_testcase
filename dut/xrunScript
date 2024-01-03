@@ -1,0 +1,19 @@
+#!/bin/ksh
+
+
+# Set location variables
+
+## IC_INVOKE_DIR  /projects/H3A0/workspaces/jdavid/trunk
+export IC_INVOKE_DIR=/projects/H3A0/workspaces/jdavid/trunk
+
+## AMS_IUS_HIER  /tools/cadence/XCELIUM/23.03.002
+export AMS_IUS_HIER=`cds_root xrun`
+
+
+## AMS_CIC_HIER  /tools/cadence/ICADVM/20.10.320
+export AMS_CIC_HIER=`cds_root virtuoso`
+
+
+export TESTBENCH_TOPCELL="simple_uvm_testcase"
+cd netlist
+xrun  -f xrunArgs
