@@ -1,0 +1,40 @@
+//Verilog-AMS HDL for  "simple_uvm_testcase_stim_analog_adrive" "verilogams"
+`include "constants.vams"
+`include "disciplines.vams"
+module simple_uvm_testcase_stim_analog_adrive ( 
+	input  vcntrl0, vcntrl1, vcntrl2, 	vcntrl3 
+);
+parameter real vmax =1.8;
+parameter real vcmpl = vmax -0.3;
+parameter real tt = 1n;
+electrical 	 vcntrl0, vcntrl1, vcntrl2, vcntrl3;
+real vcntrl0_vset, vcntrl1_vset, vcntrl2_vset, vcntrl3_vset;
+real vcntrl0_roff = 10K; real vcntrl1_roff = 10K; real vcntrl2_roff = 10K; real vcntrl3_roff = 10K;
+real vcntrl0_ron = 10; real vcntrl1_ron = 10; real vcntrl2_ron = 10; real vcntrl3_ron = 10;
+real vcntrl0_rratio, vcntrl1_rratio, vcntrl2_rratio, vcntrl3_rratio;
+electrical vcntrl0_vdrive, vcntrl1_vdrive, vcntrl2_vdrive, vcntrl3_vdrive;
+real vcntrl0_rout, vcntrl1_rout, vcntrl2_rout, vcntrl3_rout;
+
+analog begin
+	vcntrl0_rratio = transition(vcntrl0_ron/vcntrl0_roff,0,tt,tt);
+	vcntrl1_rratio = transition(vcntrl1_ron/vcntrl1_roff,0,tt,tt);
+	vcntrl2_rratio = transition(vcntrl2_ron/vcntrl2_roff,0,tt,tt);
+	vcntrl3_rratio = transition(vcntrl3_ron/vcntrl3_roff,0,tt,tt);
+
+	vcntrl0_rout = vcntrl0_roff*pow( vcntrl0_rratio, transition(vcntrl0_enable,0,tt,tt) );
+	vcntrl1_rout = vcntrl1_roff*pow( vcntrl1_rratio, transition(vcntrl1_enable,0,tt,tt) );
+	vcntrl2_rout = vcntrl2_roff*pow( vcntrl2_rratio, transition(vcntrl2_enable,0,tt,tt) );
+	vcntrl3_rout = vcntrl3_roff*pow( vcntrl3_rratio, transition(vcntrl3_enable,0,tt,tt) );
+
+	V(vcntrl0_vdrive) <+ transition(vcntrl0_vset,0,tt,tt); 
+	V(vcntrl1_vdrive) <+ transition(vcntrl1_vset,0,tt,tt); 
+	V(vcntrl2_vdrive) <+ transition(vcntrl2_vset,0,tt,tt); 
+	V(vcntrl3_vdrive) <+ transition(vcntrl3_vset,0,tt,tt); 
+
+	I(vcntrl0,vcntrl0_vdrive) <+ V(vcntrl0,vcntrl0_vdrive)/vcntrl0_rout;
+	I(vcntrl1,vcntrl1_vdrive) <+ V(vcntrl1,vcntrl1_vdrive)/vcntrl1_rout;
+	I(vcntrl2,vcntrl2_vdrive) <+ V(vcntrl2,vcntrl2_vdrive)/vcntrl2_rout;
+	I(vcntrl3,vcntrl3_vdrive) <+ V(vcntrl3,vcntrl3_vdrive)/vcntrl3_rout;
+
+end
+endmodule

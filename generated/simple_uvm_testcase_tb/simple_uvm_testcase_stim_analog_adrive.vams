@@ -1,0 +1,85 @@
+//Verilog-AMS HDL for "RFDV_scratch_sim", "simple_uvm_testcase_stim_analog_adrive" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+// auto generated power top
+module simple_uvm_testcase_stim_analog_adrive ( 
+	input  	 	vcntrl0 , 
+	input  	 	vcntrl1 , 
+	input  	 	vcntrl2 , 
+	input  	 	vcntrl3 
+);
+parameter real vmax =1.8;
+parameter real vcmpl = vmax -0.3;
+parameter real tt = 1n;
+// declarations for signals
+electrical 	 vcntrl0;
+electrical 	 vcntrl1;
+electrical 	 vcntrl2;
+electrical 	 vcntrl3;
+
+// variables for the digital context
+// declarations for voltage/current set variables. 
+real vcntrl0_vset;
+real vcntrl1_vset;
+real vcntrl2_vset;
+real vcntrl3_vset;
+
+// declaration for current gout variables.
+
+// declarations for voltage rout/ variables.  - dont use array variable for easier plotting 
+real vcntrl0_roff = 10K;
+real vcntrl1_roff = 10K;
+real vcntrl2_roff = 10K;
+real vcntrl3_roff = 10K;
+
+real vcntrl0_ron = 10;
+real vcntrl1_ron = 10;
+real vcntrl2_ron = 10;
+real vcntrl3_ron = 10;
+
+
+// for the analog context
+// iout
+
+// rratio 
+real vcntrl0_rratio;
+real vcntrl1_rratio;
+real vcntrl2_rratio;
+real vcntrl3_rratio;
+
+// declarations for supply voltage variables. (assuming all are voltages)
+electrical vcntrl0_vdrive;
+electrical vcntrl1_vdrive;
+electrical vcntrl2_vdrive;
+electrical vcntrl3_vdrive;
+
+// declarations for supply rout/gout variables. (assuming all are voltages)
+real vcntrl0_rout;
+real vcntrl1_rout;
+real vcntrl2_rout;
+real vcntrl3_rout;
+
+analog begin
+	vcntrl0_rratio = transition(vcntrl0_ron/vcntrl0_roff,0,tt,tt);
+	vcntrl1_rratio = transition(vcntrl1_ron/vcntrl1_roff,0,tt,tt);
+	vcntrl2_rratio = transition(vcntrl2_ron/vcntrl2_roff,0,tt,tt);
+	vcntrl3_rratio = transition(vcntrl3_ron/vcntrl3_roff,0,tt,tt);
+
+	vcntrl0_rout = vcntrl0_roff*pow( vcntrl0_rratio, transition(vcntrl0_enable,0,tt,tt) );
+	vcntrl1_rout = vcntrl1_roff*pow( vcntrl1_rratio, transition(vcntrl1_enable,0,tt,tt) );
+	vcntrl2_rout = vcntrl2_roff*pow( vcntrl2_rratio, transition(vcntrl2_enable,0,tt,tt) );
+	vcntrl3_rout = vcntrl3_roff*pow( vcntrl3_rratio, transition(vcntrl3_enable,0,tt,tt) );
+
+	V(vcntrl0_vdrive) <+ transition(vcntrl0_vset,0,tt,tt); 
+	V(vcntrl1_vdrive) <+ transition(vcntrl1_vset,0,tt,tt); 
+	V(vcntrl2_vdrive) <+ transition(vcntrl2_vset,0,tt,tt); 
+	V(vcntrl3_vdrive) <+ transition(vcntrl3_vset,0,tt,tt); 
+
+	I(vcntrl0,vcntrl0_vdrive) <+ V(vcntrl0,vcntrl0_vdrive)/vcntrl0_rout;
+	I(vcntrl1,vcntrl1_vdrive) <+ V(vcntrl1,vcntrl1_vdrive)/vcntrl1_rout;
+	I(vcntrl2,vcntrl2_vdrive) <+ V(vcntrl2,vcntrl2_vdrive)/vcntrl2_rout;
+	I(vcntrl3,vcntrl3_vdrive) <+ V(vcntrl3,vcntrl3_vdrive)/vcntrl3_rout;
+
+end
+endmodule

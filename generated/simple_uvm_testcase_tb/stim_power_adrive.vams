@@ -1,0 +1,22 @@
+//Verilog-AMS HDL for "simple_uvm_testcase_stim_power_adrive" "verilogams"
+`include "constants.vams"
+`include "disciplines.vams"
+module simple_uvm_testcase_stim_power_adrive ( 
+	output	AVDD1P8 , 	output  	 	AVSS  );
+    electrical 	 AVDD1P8, 	 AVSS;
+    reg sample_trigger = 0;     real AVDD1P8_vset;
+    integer AVDD1P8_enable;     real AVDD1P8_roff = 10K;
+    real AVDD1P8_ron = 10;     real AVDD1P8_tt = 1n;
+    real AVDD1P8_rratio;    electrical AVDD1P8_vdrive;
+    real AVDD1P8_rout;
+    always @(posedge sample_trigger) begin //copy monitored voltages to obserations
+    end
+    analog begin
+        AVDD1P8_rratio = transition(AVDD1P8_ron/AVDD1P8_roff,0,AVDD1P8_tt,AVDD1P8_tt);
+        AVDD1P8_rout = AVDD1P8_roff * pow( AVDD1P8_rratio, 
+                        transition(AVDD1P8_enable,0,AVDD1P8_tt,AVDD1P8_tt) );
+        V(AVDD1P8_vdrive) <+ transition(AVDD1P8_vset,0,AVDD1P8_tt,AVDD1P8_tt); 
+        I(AVDD1P8,AVDD1P8_vdrive) <+ V(AVDD1P8,AVDD1P8_vdrive)/AVDD1P8_rout;
+        V(AVSS) <+ 0;
+    end
+endmodule

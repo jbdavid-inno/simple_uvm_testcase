@@ -1,0 +1,56 @@
+//Verilog-AMS HDL for "RFDV_scratch_sim", "simple_uvm_testcase_stim_power_adrive" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+// auto generated power top
+module simple_uvm_testcase_stim_power_adrive ( 
+	output  	 	AVDD1P8 , 
+	output  	 	AVSS 
+);
+// declarations for signals
+electrical 	 AVDD1P8;
+electrical 	 AVSS;
+
+// variables for the digital context
+reg sample_trigger = 0; 
+// declarations for supply voltage variables. (assuming all are voltages) //this is the variable set when the supply voltage changes
+real AVDD1P8_vset;
+
+// declarations for supply enable variables. (assuming all are voltages)// when set to 1 the resistance is changed from roff to ron (logarithmically)
+integer AVDD1P8_enable;
+
+// declarations for supply rout variables. (assuming all are voltages) - dont use array variable for easier plotting 
+real AVDD1P8_roff = 10K;
+
+real AVDD1P8_ron = 10;
+
+// declarations for transition time
+real AVDD1P8_tt = 1n;
+
+
+// for the analog context
+// rratio 
+real AVDD1P8_rratio;
+
+// declarations for supply voltage variables. (assuming all are voltages)
+electrical AVDD1P8_vdrive;
+
+// declarations for supply rout variables. (assuming all are voltages)
+real AVDD1P8_rout;
+
+always @(posedge sample_trigger) begin
+
+end
+
+analog begin
+	AVDD1P8_rratio = transition(AVDD1P8_ron/AVDD1P8_roff,0,AVDD1P8_tt,AVDD1P8_tt);
+
+	AVDD1P8_rout = AVDD1P8_roff*pow( AVDD1P8_rratio, transition(AVDD1P8_enable,0,AVDD1P8_tt,AVDD1P8_tt) );
+
+	V(AVDD1P8_vdrive) <+ transition(AVDD1P8_vset,0,AVDD1P8_tt,AVDD1P8_tt); 
+
+	I(AVDD1P8,AVDD1P8_vdrive) <+ V(AVDD1P8,AVDD1P8_vdrive)/AVDD1P8_rout;
+	V(AVSS) <+ 0;
+
+end
+endmodule

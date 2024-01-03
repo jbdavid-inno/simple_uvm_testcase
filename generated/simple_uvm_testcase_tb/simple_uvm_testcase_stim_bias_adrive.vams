@@ -1,0 +1,37 @@
+//Verilog-AMS HDL for "RFDV_scratch_sim", "simple_uvm_testcase_stim_bias_adrive" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+// auto generated power top
+module simple_uvm_testcase_stim_bias_adrive ( 
+);
+parameter real vmax =1.8;
+parameter real vcmpl = vmax -0.3;
+parameter real tt = 1n;
+// declarations for signals
+
+// variables for the digital context
+// declarations for voltage/current set variables. 
+
+// declaration for current gout variables.
+
+// declarations for voltage rout/ variables.  - dont use array variable for easier plotting 
+
+
+
+// for the analog context
+// iout
+
+// rratio 
+
+// declarations for supply voltage variables. (assuming all are voltages)
+
+// declarations for supply rout/gout variables. (assuming all are voltages)
+
+analog begin
+
+
+
+
+end
+endmodule
