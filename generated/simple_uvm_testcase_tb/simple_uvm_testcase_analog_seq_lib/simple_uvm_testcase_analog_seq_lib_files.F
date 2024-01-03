@@ -1,0 +1,2 @@
+-incdir .
+simple_uvm_testcase_analog_seq_lib_pkg.sv
